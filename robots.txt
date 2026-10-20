@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /terms-of-use
+Disallow: /privacy-policy
+Allow: /
+
+Sitemap: https://www.hirehybryd.com/sitemap.xml
