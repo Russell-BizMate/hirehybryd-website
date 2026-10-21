@@ -1,10 +1,12 @@
 # Hybryd
 
-> Hybryd is a remote staffing agency based in Provo, Utah that connects U.S. small businesses with vetted, full-time international professionals for office operations, customer support, and administrative roles. Hybryd recruits, vets, and matches candidates, handles HR and payroll, and invests in ongoing development and community so team members stay long term.
+> Hybryd is an international remote staffing agency based in Provo, Utah that connects U.S. small businesses with vetted, full-time professionals from the Philippines, Mexico, Nigeria, and other countries across Latin America, Africa, and Asia, for office operations, customer support, and administrative roles. Hybryd recruits, vets, and matches candidates, handles HR and payroll, and invests in ongoing development and community so team members stay long term.
 
 Founded in 2023 by Russell Mathias. Website: https://www.hirehybryd.com
 
 ## What Hybryd does
+
+- International talent pool: team members are based in the Philippines, Nigeria, Mexico, and other countries in South America, Africa, and Asia. All work in English on U.S. business hours.
 
 - Places full-time remote team members (not part-time or project-based) who work the same hours as the client's in-person staff.
 - Roles: office manager, customer support representative, social media team member, marketing coordinator, logistics coordinator, accounts receivable/payable clerk, operations support, route manager.
