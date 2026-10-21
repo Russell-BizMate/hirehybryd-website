@@ -14,8 +14,8 @@ body = src[src.find("<body"):]
 nav = re.search(r"<body>(<div data-animation.*?</nav><div class=\"menu-button w-nav-button\"><div class=\"icon[^\"]*w-icon-nav-menu\"></div></div></div></div></div>)", body, re.S).group(1)
 nav = nav.replace(' aria-current="page"', "").replace(" w--current", "")
 nav = re.sub(r'<li><a href="/our-story"([^>]*)>OUR STORY</a></li>',
-             r'<li class="nav-spacing"><a href="/our-story"\1>OUR STORY</a></li><li><a href="/blog" aria-current="page" class="nav-link copy-dark w--current">BLOG</a></li>', nav)
-assert 'href="/blog"' in nav
+             r'<li class="nav-spacing"><a href="/our-story"\1>OUR STORY</a></li><li><a href="/blog/" aria-current="page" class="nav-link copy-dark w--current">BLOG</a></li>', nav)
+assert 'href="/blog/"' in nav
 fi = body.find('<section class="section-footer"'); fe = body.find("</section>", fi) + 10
 footer = body[fi:fe]
 tail = body[fe:].replace("</body></html>", "")
@@ -51,7 +51,7 @@ for p in POSTS:
                   "mainEntityOfPage": SITE + path, "wordCount": words(p["body"]), "inLanguage": "en-US", "articleSection": p["eyebrow"]}
     crumbs = {"@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
-        {"@type": "ListItem", "position": 2, "name": "Blog", "item": SITE + "/blog"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": SITE + "/blog/"},
         {"@type": "ListItem", "position": 3, "name": p["title"], "item": SITE + path}]}
     graph = [ORG, article_ld, crumbs] + ([faq_ld] if faq_ld else [])
     ld = {"@context": "https://schema.org", "@graph": graph}
@@ -59,7 +59,7 @@ for p in POSTS:
     others = [o for o in POSTS if o["slug"] != p["slug"]][:3]
     more = "".join(f'<li><a href="/blog/{o["slug"]}">{H.escape(o["title"])}</a></li>' for o in others)
     page = head(p["title"] + " | Hybryd Blog", p["description"], path, ld, extra) + f'''<body>{nav}
-<section class="hero-our-story post-hero"><div class="w-layout-blockcontainer container-large centered w-container"><div class="post-meta"><a href="/blog" class="copy-eyebrow">Blog</a><span class="copy-eyebrow">{H.escape(p["eyebrow"])}</span><span class="copy-eyebrow post-date">{nice_date(p["date"])}</span></div><h1 class="copy-centered margin-bottom-24px">{H.escape(p["title"])}</h1><p class="post-lede copy-centered">{H.escape(p["description"])}</p></div></section>
+<section class="hero-our-story post-hero"><div class="w-layout-blockcontainer container-large centered w-container"><div class="post-meta"><a href="/blog/" class="copy-eyebrow">Blog</a><span class="copy-eyebrow">{H.escape(p["eyebrow"])}</span><span class="copy-eyebrow post-date">{nice_date(p["date"])}</span></div><h1 class="copy-centered margin-bottom-24px">{H.escape(p["title"])}</h1><p class="post-lede copy-centered">{H.escape(p["description"])}</p></div></section>
 <section class="section-100 post-section"><div class="w-layout-blockcontainer container-large w-container"><article class="post">{p["body"]}{faq_html}</article>
 <aside class="post-more"><h5 class="copy-eyebrow">More from the Hybryd blog</h5><ul>{more}</ul></aside></div></section>
 {cta}{footer}{tail}</body></html>'''
@@ -68,12 +68,12 @@ for p in POSTS:
 # ---- index
 posts_sorted = sorted(POSTS, key=lambda x: x["date"], reverse=True)
 cards = "".join(f'''<a href="/blog/{p["slug"]}" class="post-card"><span class="copy-eyebrow">{H.escape(p["eyebrow"])}</span><h3>{H.escape(p["title"])}</h3><p>{H.escape(p["description"])}</p><span class="post-card-date">{nice_date(p["date"])}</span></a>''' for p in posts_sorted)
-blog_ld = {"@context": "https://schema.org", "@graph": [ORG, {"@type": "Blog", "@id": SITE + "/blog#blog", "url": SITE + "/blog", "name": "Hybryd Blog", "publisher": {"@id": SITE + "/#organization"},
+blog_ld = {"@context": "https://schema.org", "@graph": [ORG, {"@type": "Blog", "@id": SITE + "/blog/#blog", "url": SITE + "/blog/", "name": "Hybryd Blog", "publisher": {"@id": SITE + "/#organization"},
             "blogPost": [{"@type": "BlogPosting", "headline": p["title"], "url": SITE + "/blog/" + p["slug"], "datePublished": p["date"]} for p in posts_sorted]},
-           {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": SITE + "/blog"}]}]}
+           {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": SITE + "/blog/"}]}]}
 index = head("Blog | Remote Staffing Advice for Small Business | Hybryd",
              "Straight answers on hiring and keeping full-time remote office staff from the Philippines, Latin America, and Africa: cost, onboarding, retention, and which roles to fill first.",
-             "/blog", blog_ld) + f'''<body>{nav}
+             "/blog/", blog_ld) + f'''<body>{nav}
 <section class="hero-our-story post-hero"><div class="w-layout-blockcontainer container-large centered w-container"><h1 class="copy-centered margin-bottom-24px">The Hybryd blog</h1><p class="post-lede copy-centered">Straight answers for owners thinking about remote office staff. No fluff, no jargon, written by people who do this every day.</p></div></section>
 <section class="section-100 post-section"><div class="w-layout-blockcontainer container-large w-container"><div class="post-grid">{cards}</div></div></section>
 {cta}{footer}{tail}</body></html>'''
@@ -83,7 +83,7 @@ open("blog/index.html", "w", encoding="utf-8").write(index)
 today = datetime.date.today().isoformat()
 sm = open("sitemap.xml").read()
 sm = re.sub(r"\s*<url><loc>https://www\.hirehybryd\.com/blog.*?</url>", "", sm, flags=re.S)
-entries = f'  <url><loc>{SITE}/blog</loc><lastmod>{today}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>\n'
+entries = f'  <url><loc>{SITE}/blog/</loc><lastmod>{today}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>\n'
 entries += "".join(f'  <url><loc>{SITE}/blog/{p["slug"]}</loc><lastmod>{p.get("updated", p["date"])}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>\n' for p in posts_sorted)
 sm = sm.replace("</urlset>", entries + "</urlset>")
 open("sitemap.xml", "w").write(sm)
