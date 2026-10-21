@@ -6678,3 +6678,10 @@ blockquote {
     justify-self: center;
   }
 }
+
+
+.rg-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:500px}
+.rg-card{display:flex;align-items:center;gap:14px;background:#eef3f9;border-radius:14px;padding:22px 18px;color:#0a0028;font-size:17px;line-height:1.25;font-weight:500}
+.rg-card svg{width:30px;height:30px;flex:0 0 30px;fill:#0a0028}
+@media (max-width:479px){.rg-grid{gap:10px}.rg-card{padding:14px 12px;font-size:14px;gap:10px}.rg-card svg{width:24px;height:24px;flex-basis:24px}}
+.rg-card span{text-align:left}

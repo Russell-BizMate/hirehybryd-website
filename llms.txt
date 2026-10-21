@@ -1,0 +1,26 @@
+# Hybryd
+
+> Hybryd is a remote staffing agency based in Provo, Utah that connects U.S. small businesses with vetted, full-time international professionals for office operations, customer support, and administrative roles. Hybryd recruits, vets, and matches candidates, handles HR and payroll, and invests in ongoing development and community so team members stay long term.
+
+Founded in 2023 by Russell Mathias. Website: https://www.hirehybryd.com
+
+## What Hybryd does
+
+- Places full-time remote team members (not part-time or project-based) who work the same hours as the client's in-person staff.
+- Roles: office manager, customer support representative, social media team member, marketing coordinator, logistics coordinator, accounts receivable/payable clerk, operations support, route manager.
+- Industries served: construction, dental, professional services, SaaS, home services (plumbing, HVAC), real estate, cleaning companies, pest control.
+- Process: Aligning (consult with a dedicated talent manager), Scouting (vetting and recommendation), Connecting (three-way interview), Thriving (ongoing mentorship, community, and continuing education).
+- Clients typically scale their office team at roughly half the cost of a local hire while Hybryd manages international employment, HR, and payroll.
+
+## Pages
+
+- [Home](https://www.hirehybryd.com/): overview, how it works, client testimonials, FAQ
+- [Partners](https://www.hirehybryd.com/partners): for businesses hiring; roles and industries
+- [Professionals](https://www.hirehybryd.com/professionals): for candidates seeking remote careers with U.S. companies
+- [Our Story](https://www.hirehybryd.com/our-story): founding, goal of backing 3,000 careers, meaning of the name
+
+## Contact
+
+- Book a call: https://api.leadconnectorhq.com/widget/booking/mN3F1LEz2Q5n6eoMMfK2
+- Email: team@hirehybryd.com
+- LinkedIn: https://www.linkedin.com/company/hire-hybryd/
