@@ -6709,3 +6709,14 @@ blockquote {
 @media (max-width:991px){.post-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:767px){.post-hero{padding-top:110px}.post-hero h1{font-size:32px}.post{font-size:17px}.post h2{font-size:24px}}
 @media (max-width:479px){.post-grid{grid-template-columns:1fr}}
+
+/* ---- logo marquee (CSS only) ---- */
+.logo-track{display:flex;width:max-content;animation:logo-scroll 40s linear infinite;will-change:transform}
+.logo-track .logo-container{flex:0 0 auto;width:auto!important;animation:none!important;position:static!important}
+.logo-track .logo-image{flex:0 0 auto;width:auto;height:60px}
+.carousel-container .div-block-13{left:0;top:0;pointer-events:none}
+.carousel-container .fade-right{left:auto;right:0;background-image:linear-gradient(270deg,#967ccf,#0000)}
+@keyframes logo-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.logo-track{animation:none}}
+@media (max-width:767px){.logo-track .logo-image{height:30px}}
+@media (max-width:479px){.logo-track .logo-image{height:25px}}
